@@ -9,7 +9,7 @@ int Length() {
 	return i;
 }
 
-void setprevious() {
+void setPrevious() {
 
 	Node* current = root_;
 	Node* previous = nullptr;
@@ -23,3 +23,17 @@ void setprevious() {
 
 
 }
+
+void getPrevious(int position) {
+
+		int i = 0;
+		Node* tmp = root_;
+		while (tmp != nullptr && i != position) {
+			tmp = tmp->next;
+			i++;
+		} 
+
+		std::cout <<"[" << tmp->previous->data << "]" << std::endl;
+	
+	}
+
