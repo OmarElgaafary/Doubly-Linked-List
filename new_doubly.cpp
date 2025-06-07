@@ -65,7 +65,12 @@ public:
 
 	void print_list(Node* node)
 	{
-		if (node == nullptr) return;
+		if (node == nullptr)
+		{
+			std::cout << "[Empty]\n";
+			return;
+		}
+
 		std::cout << node->value << " ";
 		print_list(node->next);
 	}
@@ -93,6 +98,18 @@ public:
 	{
 		return root;
 	}
+
+	void free_list()
+	{
+		Node* tmp;
+		while (root != nullptr)
+		{
+			tmp = root;
+			root = root->next;
+			delete tmp;
+
+		}
+	}
 	
 };
 
@@ -111,4 +128,8 @@ int main()
 	std::cout << "\n\n-------------------\n\n";
 
 	doubly.print_reverse_list();
+
+	std::cout << "\n\n---------------------\n\n";
+	doubly.free_list();
+	doubly.print_list(doubly.get_root());
 }
